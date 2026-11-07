@@ -191,8 +191,10 @@ conversation.
 
 Play back as you go. As soon as you understand one part well enough to
 describe it (what it's for and who it serves, say, or how one piece
-behaves), describe that part back in about 200-300 words, then return to
-questions about the next part. Playback and questions alternate through
+behaves), describe that part back in about 100 words, plus a diagram or
+table when the part has structure (pieces that connect, steps in order,
+states, options side by side), then return to questions about the next
+part. Playback and questions alternate through
 the whole conversation; the last chunk covers whatever is left.
 
 Only what they said goes in as theirs. Anything you filled in goes in
@@ -241,6 +243,23 @@ from without going back to your human partner. Cover:
 For a small change, the short design covers the same points in a line
 or two each and goes straight to your human partner, without the
 builder check.
+
+Your human partner has to read it to approve it, and a wall of text
+hides what matters. Shape it for that reader:
+
+- **Open with a summary** of five lines or fewer: what, why, which
+  approach, and the decisions they should check.
+- **Lead with a picture where there is structure.** How parts connect,
+  a flow, states, a comparison: draw it (Mermaid in a markdown doc) or
+  put it in a table, then add only the prose the picture can't carry.
+- **Keep sections short.** A few short paragraphs at most; lists and
+  tables over paragraphs of enumeration.
+- **Pull out what needs their eyes.** One block near the top listing
+  the decisions they made and the calls you made for them, so neither
+  gets lost in the body.
+- **Push detail down.** Edge cases and fine-grained specs go in a
+  Details section at the end, where the builder finds them and your
+  human partner can skip them.
 
 **Where it goes:** in a software repo,
 `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md`, committed.
@@ -292,6 +311,7 @@ superpowers:writing-plans and no other skill.
 | "I should explain the process first" | Ask your question. The process shows itself. |
 | "They said 'sounds good' to the idea" | Approval covers what you showed them. A design doc you haven't written isn't approved. |
 | "The spike works, I'll keep building on it" | Keeping it is a new request. Back through the gate. |
+| "More detail makes the doc more complete" | They have to read it to approve it. Summary and pictures up top, detail at the end. |
 
 ## Visual Companion
 
