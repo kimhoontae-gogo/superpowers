@@ -25,14 +25,16 @@ why?
 
 Before you start implementing, you must, in order:
 
-1. Lay out the approaches in a message of their own, and have your
-   human partner pick one (see Lay out the approaches).
-2. Write the design doc, short or full (see Size the Work).
-3. Get their approval of that doc.
-4. Invoke the superpowers:writing-plans skill.
+1. Sketch the approaches as a big picture in a message of their own,
+   and have your human partner pick one (see Sketch the Big Picture).
+2. Fill in the approach they picked, with them (see Fill In the Picked
+   Approach).
+3. Write the design doc, short or full (see Size the Work).
+4. Get their approval of that doc.
+5. Invoke the superpowers:writing-plans skill.
 
 If nothing is open when you write your first message and there's one
-sensible way, steps 1 to 3 happen in that message (see Your First
+sensible way, steps 1 to 4 happen in that message (see Your First
 Message).
 
 Two things aren't implementing: a spike they said yes to (see Spike to
@@ -62,7 +64,7 @@ Move the work forward, with one of these:
   have considered that would change what they're asking for or how it
   has to be built, like a constraint, a conflict, or a cheaper path, say
   so plainly. How to build it comes later, once you understand what they
-  want (see Lay out the approaches). End with one line inviting
+  want (see Sketch the Big Picture). End with one line inviting
   corrections. Then, if they haven't told you why they want it, even if
   you can guess, ask about that: one open question in their own terms,
   with nothing to pick from. If they have told you, and their request
@@ -153,18 +155,8 @@ beats a question.
 would help, go look: deeper into their codebase or project, their own
 files and data, or the web. Say what you looked for and what you found.
 
-**Lay out the approaches.** Once you understand what they want, and
-before you write anything up, put the ways of building it in a message
-of its own. Come up with several real alternatives and drop the weak
-ones, including any that work against why they want it and any the
-existing work rules out. Sketch the two or three that remain concretely
-enough to picture, grounded in what the project actually does, with what
-each trades off. Recommend one and say why, then ask which way they want
-to go; if they've handed you the how, say you'll go with your pick
-instead. When there's genuinely one sensible way, say so in that
-message and explain why the others don't fit; the design comes in the
-next one. This is for how it gets built; for what they want, get them
-describing first.
+**Then sketch the big picture.** Once you understand what they want,
+move on to the ways of building it (see Sketch the Big Picture).
 
 **Show, don't tell.** Whenever seeing would help more than reading,
 sketch it in text: a few lines of what they'd see. Offer the visual
@@ -205,6 +197,68 @@ text sketch next to the description. If the look itself is theirs to
 decide and they haven't seen the visual companion offer yet, send the
 offer instead (its own message, below) and hold the chunk for the next
 message. Once they've accepted, put a mockup next to the description.
+
+## Sketch the Big Picture
+
+Once you understand what they want, and before any detail, put the ways
+of building it in a message of its own. Come up with several real
+alternatives and drop the weak ones, including any that work against
+why they want it and any the existing work rules out. Sketch the two or
+three that remain, grounded in what the project actually does.
+
+This step is for steering. They should be able to turn down a direction
+cheaply, before either of you has put work into its details. So keep
+the message at the level of the big picture:
+
+- for each approach, a small diagram of its main parts and how they
+  connect, and one line on what it is
+- one table comparing them on what actually separates them here:
+  effort, risk, fit with what exists, what it makes easy or hard later
+- your pick and why, in a line or two, then ask which way they want to
+  go; if they've handed you the how, say you'll go with your pick instead
+
+The whole message fits on one screen. Leave out everything that only
+matters once an approach is chosen: component details, data shapes,
+interfaces, edge cases.
+
+```
+A: one service                B: API + worker
+┌──────────────┐              ┌─────┐   ┌───────┐   ┌────────┐
+│ web+api+jobs │──▶ DB        │ API │──▶│ queue │──▶│ worker │
+└──────────────┘              └─────┘   └───────┘   └────────┘
+
+|               | A            | B                  |
+|---------------|--------------|--------------------|
+| time to build | days         | a week or two      |
+| scales        | to ~1 box    | horizontally       |
+| new ops work  | none         | run a queue        |
+Pick: A. Today's load doesn't need B, and A splits later if it does.
+```
+
+If they turn them all down, or want parts of several, sketch again at
+the same level. Never answer a rejection with more detail on the old
+sketches.
+
+When there's genuinely one sensible way, say so in that message, with
+its sketch, and explain why the others don't fit; the details come
+next. This is for how it gets built; for what they want, get them
+describing first.
+
+## Fill In the Picked Approach
+
+Only once they've picked, work out that approach in detail with them,
+one part at a time: its pieces, how things move between them, what
+happens when something fails, whatever this project needs settled. Play
+each part back as you go (see Play It Back), and ask only what would
+change what gets built. Detail nothing for the approaches they didn't
+pick.
+
+If a detail shows the pick doesn't hold up, like a constraint it can't
+meet or a cost they didn't expect, stop and say so, and go back to the
+sketches instead of patching the approach in place.
+
+For a small change, this is a line or two that goes into the short
+design.
 
 ## Size the Work
 
@@ -288,7 +342,8 @@ superpowers:writing-plans and no other skill.
 |---------|---------|
 | "I'll offer a menu of what they might want" | Options steer. Ask them to describe it first. |
 | "I'll fill in sensible defaults" | Good. Say them out loud. A default they never heard is one they couldn't reject. |
-| "I've answered their questions, so I'll write the doc" | Lay out the approaches first, in a message of their own (or, when nothing was open from the start, in your first message's short design). |
+| "I've answered their questions, so I'll write the doc" | Sketch the big picture first, in a message of its own, then fill in the one they pick (or, when nothing was open from the start, do both in your first message's short design). |
+| "I'll detail each approach so they can choose well" | Detail buries the choice and makes changing direction expensive. Sketch them all; detail only the one they pick. |
 | "I should explain the process first" | Ask your question. The process shows itself. |
 | "They said 'sounds good' to the idea" | Approval covers what you showed them. A design doc you haven't written isn't approved. |
 | "The spike works, I'll keep building on it" | Keeping it is a new request. Back through the gate. |

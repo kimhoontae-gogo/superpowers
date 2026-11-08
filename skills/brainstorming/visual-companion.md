@@ -19,7 +19,8 @@ Decide per-question, not per-session. The test: **would the user understand this
 - **Requirements and scope questions** — "what does X mean?", "which features are in scope?"
 - **Conceptual A/B/C choices** — picking between approaches described in words
 - **Tradeoff lists** — pros/cons, comparison tables
-- **Technical decisions** — API design, data modeling, architectural approach selection
+- **Technical decisions** — API design, data modeling
+- **Architectural approach selection** — a small text diagram per approach plus a comparison table; move to the browser only when the diagrams outgrow the terminal
 - **Clarifying questions** — anything where the answer is words, not a visual preference
 
 A question *about* a UI topic is not automatically a visual question. "What kind of wizard do you want?" is conceptual — use the terminal. "Which of these wizard layouts feels right?" is visual — use the browser.
